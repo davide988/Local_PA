@@ -1,19 +1,31 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>create_party</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title > CREA PARTY </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="dashboard" color="secondary"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="form_create" (submit)="onSubmit()" class="formr">
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input type="text" required formControlName="firstname"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Cognome</ion-label>
+    <ion-input type="text" required formControlName="lastname"></ion-input>
+  </ion-item>
+
+  </form>
   <ion-item>
     <ion-label>Gaming</ion-label>
     <ion-select interface="popover">
       <ion-select-option value="nes">NES</ion-select-option>
       <ion-select-option value="n64">Nintendo64</ion-select-option>
       <ion-select-option value="ps">PlayStation</ion-select-option>
-      <ion-select-option value="genesis">Sega Genesis</ion-select-option>
-      <ion-select-option value="saturn">Sega Saturn</ion-select-option>
-      <ion-select-option value="snes">SNES</ion-select-option>
     </ion-select>
   </ion-item>
 
