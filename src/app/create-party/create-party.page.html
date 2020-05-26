@@ -8,25 +8,45 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="form_create" (submit)="onSubmit()" class="formr">
-  <ion-item>
-    <ion-label position="floating">Nome</ion-label>
-    <ion-input type="text" required formControlName="firstname"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Cognome</ion-label>
-    <ion-input type="text" required formControlName="lastname"></ion-input>
-  </ion-item>
+  <form [formGroup]="form_create" (submit)="onCreate()" class="formr">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" required formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrizione</ion-label>
+      <ion-textarea type="text" required formControlName="description"> </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Genere</ion-label>
+      <ion-select required formControlName="genre" interface="popover">
+        <ion-select-option value="rock">Rock</ion-select-option>
+        <ion-select-option value="soul">Soul</ion-select-option>
+        <ion-select-option value="dance">Dance</ion-select-option>
+        <ion-select-option value="house">House</ion-select-option>
+        <ion-select-option value="tech">Tech-house</ion-select-option>
+        <ion-select-option value="latino">Latino</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Mood</ion-label>
+      <ion-select required formControlName="mood" interface="popover">
+        <ion-select-option value="rock">Anni 80-90</ion-select-option>
+        <ion-select-option value="soul">Canzoni cartoni</ion-select-option>
+
+
+      </ion-select>
+    </ion-item>
+
+    <ion-button type="submit" class="ion-margin-top" expand="block" [disabled]="form_create.invalid">Crea</ion-button>
 
   </form>
-  <ion-item>
-    <ion-label>Gaming</ion-label>
-    <ion-select interface="popover">
-      <ion-select-option value="nes">NES</ion-select-option>
-      <ion-select-option value="n64">Nintendo64</ion-select-option>
-      <ion-select-option value="ps">PlayStation</ion-select-option>
-    </ion-select>
-  </ion-item>
+
+
 
 </ion-content>

@@ -22,26 +22,47 @@ export class CreatePartyPage  {
 
   ) {}
 
-  form = new FormGroup({
-    firstname: new FormControl('', [
+  // tslint:disable-next-line:variable-name
+  form_create = new FormGroup({
+    name: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
     ]),
-    lastname: new FormControl('', [
+    description: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
     ]),
-    username: new FormControl('', [
+    genre: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
+
     ]),
-    password: new FormControl('', [
+    mood: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
+
     ]),
   });
 
-  ngOnInit() {
+
+  async onCreate(){
+    const loading = await this.loadingCtrl.create({ message: 'Creazione party in corso...' });
+    await loading.present();
+    this.partyService.create(this.form_create.value).subscribe(
+        // If success
+        async () => {
+          const toast = await this.toastCtrl.create({ message: 'Party Creato', duration: 2000, color: 'dark' });
+          await toast.present();
+          loading.dismiss();
+          this.form_create.reset();
+          // *******    aggiungere reindirizzamento a pagina party   ************
+        },
+        // If there is an error
+        async () => {
+          const alert = await this.alertCtrl.create({ message: 'There is an error', buttons: ['OK'] });
+          loading.dismiss();
+          await alert.present();
+        }
+    );
+
   }
 
 }
