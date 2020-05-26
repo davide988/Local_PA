@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Routes, RouterModule, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../auth/auth.service';
+
 import {AlertController, LoadingController, ToastController} from '@ionic/angular';
+import {PartyService} from '../services/party.service';
 
 @Component({
   selector: 'app-create-party',
@@ -14,10 +15,10 @@ export class CreatePartyPage  {
 
   constructor(
       private router: Router,
-  private PartyService: AuthService,
-  private alertCtrl: AlertController,
-  private toastCtrl: ToastController,
-  private loadingCtrl: LoadingController
+      private partyService: PartyService,
+      private alertCtrl: AlertController,
+      private toastCtrl: ToastController,
+      private loadingCtrl: LoadingController
 
   ) {}
 
